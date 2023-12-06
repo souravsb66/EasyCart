@@ -18,7 +18,14 @@ import {
   getProductsDataFailure,
   getProductsDataSuccess,
 } from "../../redux/action";
-import { CartBagIcon, SearchIcon } from "../../../assets";
+import {
+  CartBagIcon,
+  LocationDownArrowIcon,
+  SearchIcon,
+  SwiperDivIcon,
+} from "../../../assets";
+import OfferCard from "../../components/Home/OfferCard";
+import RecommendedCard from "../../components/Home/RecommendedCard";
 
 const Home = ({ route, navigation }) => {
   const { products } = useSelector((store, action) => store);
@@ -45,31 +52,88 @@ const Home = ({ route, navigation }) => {
 
   return (
     <>
-      <View style={styles.mainDiv}>
-        <View style={styles.headerDiv}>
-          <Text style={styles.headerText}>Hey, Rahul</Text>
+      <View>
+        <View style={styles.mainDiv}>
+          <View style={styles.headerDiv}>
+            <View>
+              <Text style={styles.headerText}>Hey, Rahul</Text>
+            </View>
 
-          <View>
-            <Image source={CartBagIcon} alt="CartBagIcon" style={styles.cartImage} />
-            <View style={styles.cartDiv}>
-              <Text>3</Text>
+            <View>
+              <Image
+                source={CartBagIcon}
+                alt="CartBagIcon"
+                style={styles.cartImage}
+              />
+              <View style={styles.cartDiv}>
+                <Text>3</Text>
+              </View>
+            </View>
+          </View>
+
+          <View style={styles.searchDiv}>
+            <Image source={SearchIcon} alt="SearchIcon" />
+            <TextInput
+              placeholder="Search Products or Store"
+              placeholderTextColor="#8891A5"
+              style={styles.searchBar}
+            />
+          </View>
+
+          <View style={styles.locationDiv}>
+            <View>
+              <Text style={{ color: "#8891A5", fontSize: 11, lineHeight: 15 }}>
+                DELIVERY TO
+              </Text>
+              <Text style={{ color: "#F8F9FB", fontSize: 14, lineHeight: 19 }}>
+                Green Way 3000, Sylhet <Image source={LocationDownArrowIcon} />
+              </Text>
+            </View>
+
+            <View>
+              <Text style={{ color: "#8891A5", fontSize: 11, lineHeight: 15 }}>
+                WITHIN
+              </Text>
+              <Text style={{ color: "#F8F9FB", fontSize: 14, lineHeight: 19 }}>
+                1 Hour <Image source={LocationDownArrowIcon} />
+              </Text>
             </View>
           </View>
         </View>
 
-        <View style={styles.searchDiv}>
-          <Image source={SearchIcon} alt="SearchIcon" />
-          <TextInput
-            placeholder="Search Products or Store"
-            placeholderTextColor="#8891A5"
-            style={styles.searchBar}
-          />
-        </View>
+        <View style={styles.bodyDiv}>
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+            <OfferCard />
+            <OfferCard />
+            <OfferCard />
+          </ScrollView>
 
-        <View style={styles.locationDiv}>
-          <View>
-            <Text style={{color: "#8891A5"}}>DELIVERY TO</Text>
-            <Text style={{color: "#F8F9FB"}}>Green Way 3000, Sylhet</Text>
+          <View style={styles.recommendedDiv}>
+            <Text style={{ fontSize: 30, lineHeight: 38, fontWeight: "400" }}>
+              Recommended
+            </Text>
+
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              style={styles.recommendedContainer}
+            >
+              <View style={styles.recommendedDivStyle}>
+                <RecommendedCard />
+                <RecommendedCard />
+              </View>
+              <View
+                style={styles.recommendedDivStyle}
+              >
+                <RecommendedCard />
+                <RecommendedCard />
+              </View>
+              <View
+                style={styles.recommendedDivStyle}
+              >
+                <RecommendedCard />
+                <RecommendedCard />
+              </View>
+            </ScrollView>
           </View>
         </View>
       </View>
@@ -82,23 +146,22 @@ export default Home;
 const styles = StyleSheet.create({
   mainDiv: {
     backgroundColor: "#2A4BA0",
-    display: 'flex',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-    rowGap: 20
+    display: "flex",
+    padding: 20,
+    justifyContent: "space-evenly",
+    alignItems: "flex-start",
+    rowGap: 20,
   },
   headerDiv: {
     marginTop: 52,
-    width: 339,
-    height: 30,
+    width: "100%",
+    height: 40,
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center",
   },
   headerText: {
     fontSize: 22,
-    lineHeight: 30,
     fontWeight: "600",
     color: "#F8F9FB",
   },
@@ -120,25 +183,44 @@ const styles = StyleSheet.create({
     height: 24,
   },
   searchDiv: {
-    width: 335,
+    width: "100%",
     height: 56,
     backgroundColor: "#153075",
     borderRadius: 50,
     padding: 15,
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center'
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
   },
   searchBar: {
     marginLeft: 15,
     fontSize: 16,
-    color: "#F8F9FB"
+    color: "#F8F9FB",
   },
   locationDiv: {
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-start'
-  }
+    width: "100%",
+    height: 38,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  bodyDiv: {
+    padding: 15,
+    backgroundColor: "#F8F9FB"
+  },
+  recommendedDiv: {
+    marginTop: 20,
+  },
+  recommendedContainer: {
+    marginTop: 20,
+    height: 300,
+  },
+  recommendedDivStyle: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    gap: 15,
+    marginBottom: 15,
+  },
 });
