@@ -4,6 +4,8 @@ import Shoe2 from './shoePng.png';
 import AddIcon from './AddIcon.png';
 import DeleteICon from './DeleteICon.png';
 import RemoveIcon from './RemoveIcon.png';
+import CartBagIcon from './CartBagIcon.png';
+import SearchIcon from './SearchIcon.png';
 
 export {
     Shoe1,
@@ -12,4 +14,6 @@ export {
     AddIcon,
     DeleteICon,
     RemoveIcon,
+    CartBagIcon,
+    SearchIcon
 }
