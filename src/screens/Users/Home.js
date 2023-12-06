@@ -197,6 +197,7 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     fontSize: 16,
     color: "#F8F9FB",
+    width: "100%",
   },
   locationDiv: {
     width: "100%",
@@ -220,7 +221,6 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-evenly",
-    gap: 15,
     marginBottom: 15,
   },
 });
